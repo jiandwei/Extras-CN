@@ -14,11 +14,11 @@
         "Move-Item $dir\\`$PLUGINSDIR\\siyuan-unlock\\* $dir -force -ErrorAction SilentlyContinue",
         "Remove-Item -R -Path $dir\\`$PLUGINSDIR -ErrorAction SilentlyContinue"
     ],
-    "bin": "siyuan-unlock.exe",
+    "bin": "siyuan.exe",
     "shortcuts": [
         [
-            "siyuan-unlock.exe",
-            "Siyuan Unlock"
+            "siyuan.exe",
+            "Siyuan"
         ]
     ],
     "checkver": {
