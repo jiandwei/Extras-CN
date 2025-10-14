@@ -23,7 +23,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/appdev/siyuan-unlock/releases",
+        "url": "https://github.com/jiandwei/siyuan-unlock/releases",
         "regex": "/releases/tag/v(?<version>[\\d.]+)\""
     },
     "autoupdate": {
