@@ -1,8 +1,13 @@
 on:
   workflow_dispatch:
   schedule:
-    # run every 12 hours
-    - cron: "20 */12 * * *"
+    # 这里可以调整时间
+    # 每3小时的第5分钟执行一次
+    - cron: "5 */3 * * *"
+    # 每天北京时间晚上7点、8点、9点执行（UTC时间需要减8小时）
+    - cron: "15 11 * * *"  # 北京时间晚上7点（UTC 11:00）
+    - cron: "15 12 * * *"  # 北京时间晚上8点（UTC 12:00）
+    - cron: "15 13 * * *"  # 北京时间晚上9点（UTC 13:00）
 name: Excavator
 jobs:
   excavate:
@@ -15,3 +20,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SKIP_UPDATED: "1"
+          THROW_ERROR: "0"
