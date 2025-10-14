@@ -1,7 +1,7 @@
 {
     "version": "3.3.4",
     "description": "Siyuan Unlock Tool - 思源笔记解锁工具",
-    "homepage": "https://github.com/appdev/siyuan-unlock",
+    "homepage": "https://github.com/jiandwei/siyuan-unlock/releases",
     "license": {
         "identifier": "Unknown"
     },
@@ -27,6 +27,6 @@
         "regex": "/releases/tag/v(?<version>[\\d.]+)\""
     },
     "autoupdate": {
-        "url": "https://github.com/appdev/siyuan-unlock/releases/download/v$version/siyuan-unlock-v$version-win.exe#/dl.7z"
+        "url": "https://github.com/jiandwei/siyuan-unlock/releases/download/v$version/siyuan-unlock-v$version-win.exe#/dl.7z"
     }
 }
