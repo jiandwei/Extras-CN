@@ -12,7 +12,8 @@
         "7z x \"$dir\\`$PLUGINSDIR\\*.7z\" -o\"$dir\\`$PLUGINSDIR\\siyuan-unlock\"",
         "Remove-Item -R -Path $dir\\resources -ErrorAction SilentlyContinue",
         "Move-Item $dir\\`$PLUGINSDIR\\siyuan-unlock\\* $dir -force -ErrorAction SilentlyContinue",
-        "Remove-Item -R -Path $dir\\`$PLUGINSDIR -ErrorAction SilentlyContinue"
+        "Remove-Item -R -Path $dir\\`$PLUGINSDIR -ErrorAction SilentlyContinue",
+        "Remove-Item -Path \"$dir\\resources\\pandoc.zip\" -ErrorAction SilentlyContinue"
     ],
     "bin": "siyuan.exe",
     "shortcuts": [
