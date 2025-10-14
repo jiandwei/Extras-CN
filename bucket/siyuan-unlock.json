@@ -16,7 +16,6 @@
         "Remove-Item -Path \"$dir\\resources\\pandoc.zip\" -ErrorAction SilentlyContinue",
         "Remove-Item -Path \"$dir\\resources\\changelogs\" -ErrorAction SilentlyContinue",
         "Remove-Item -Path \"$dir\\resources\\guide\" -ErrorAction SilentlyContinue",
-        "Remove-Item -Path \"$dir\LICENSES.chromium.html" -ErrorAction SilentlyContinue",
         "Get-ChildItem \"$dir\\locales\" -Exclude \"zh-CN.pak\" | Remove-Item -Force -ErrorAction SilentlyContinue"
     ],
     "bin": "siyuan.exe",
