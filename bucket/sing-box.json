@@ -12,6 +12,7 @@
     },
     "extract_dir": "sing-box-1.12.10-dhr60-windows-amd64",
     "bin": "sing-box.exe",
+    "persist": "config",
     "checkver": {
         "github": "https://github.com/DHR60/sing-box",
         "regex": "tag/v([\\d.]+(?:-dhr60)?)"
