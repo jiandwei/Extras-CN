@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_23125.exe",
-            "hash": "d4a3835ce0597f1f9a4dd3b62ad7cc09bbcb2deac3e2543926b9da25db70b7db"
+            "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_X64_23122.exe",
+            "hash": "97504EACDF7CA4736BAE46E54ED7B1E7DC1C30AAD6ED4A39826882A63F517B7F"
         }
     },
     "pre_install": [
@@ -32,6 +32,6 @@
         "jsonpath": "$.productDetail.productVcode"
     },
     "autoupdate": {
-        "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_$buildVersion.exe"
+        "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_X64_$buildVersion.exe"
     }
 }
