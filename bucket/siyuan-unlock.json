@@ -1,13 +1,13 @@
 {
     "version": "3.3.5",
     "description": "Siyuan Unlock Tool - 思源笔记解锁工具",
-    "homepage": "https://github.com/jiandwei/siyuan-unlock/releases",
+    "homepage": "https://github.com/appdev/siyuan-unlock/releases",
     "license": {
         "identifier": "Unknown"
     },
     "depends": "7zip",
-    "url": "https://github.com/jiandwei/siyuan-unlock/releases/download/v3.3.5/siyuan-unlock-v3.3.5-win.exe#/dl.7z",
-    "hash": "3c21ff7a36c73d18db58df0b816629a6208abbbd1eb0a9a5807b5ebb6cf2e7a9",
+    "url": "https://github.com/appdev/siyuan-unlock/releases/download/v3.3.5/siyuan-unlock-v3.3.5-win.exe#/dl.7z",
+    "hash": "6F23FD9783082FEB833028B59DD87CD47818B28042A6F478BBBDBE5D8E87AF12",
     "pre_install": [
         "7z x \"$dir\\`$PLUGINSDIR\\*.7z\" -o\"$dir\\`$PLUGINSDIR\\siyuan-unlock\"",
         "Remove-Item -R -Path $dir\\resources -ErrorAction SilentlyContinue",
@@ -26,10 +26,10 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/jiandwei/siyuan-unlock/releases",
+        "url": "https://github.com/appdev/siyuan-unlock/releases",
         "regex": "/releases/tag/v(?<version>[\\d.]+)\""
     },
     "autoupdate": {
-        "url": "https://github.com/jiandwei/siyuan-unlock/releases/download/v$version/siyuan-unlock-v$version-win.exe#/dl.7z"
+        "url": "https://github.com/appdev/siyuan-unlock/releases/download/v$version/siyuan-unlock-v$version-win.exe#/dl.7z"
     }
 }
