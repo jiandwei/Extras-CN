@@ -1,5 +1,5 @@
 {
-    "version": "1.12.10-reF1nd",
+    "version": "1.12.10-dhr60",
     "description": "The universal proxy platform",
     "homepage": "https://github.com/DHR60/sing-box",
     "license": "GPL-3.0",
@@ -9,17 +9,17 @@
             "hash": "sha256:e54db36d71ddf1b029ae7350031bf5b1dcdec91786d584a0cf6a020e3d46aea5"
         }
     },
-    "extract_dir": "sing-box-1.12.10-reF1nd",
+    "extract_dir": "sing-box-1.12.10-dhr60",
     "bin": "sing-box.exe",
     "persist": "config",
     "checkver": {
-        "github": "https://github.com/jiandwei/sing-box",
-        "regex": "tag/reF1nd-v([\\d.]+(?:-reF1nd)?)"
+        "github": "https://github.com/DHR60/sing-box",
+        "regex": "tag/v([\\d.]+-dhr60)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jiandwei/sing-box/releases/download/reF1nd-v$version/sing-box-$version.zip",
+                "url": "https://github.com/DHR60/sing-box/releases/download/v$version/sing-box-$version-windows-amd64.zip",
                 "extract_dir": "sing-box-$version-windows-amd64"
             }
         }
