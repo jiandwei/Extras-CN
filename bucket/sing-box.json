@@ -9,7 +9,7 @@
             "hash": "sha256:5366d6e1e61383bbbef8f090995376f053a53f5ddc24cc04ff4a9ec3cb2ca5a1"
         }
     },
-    "extract_dir": "sing-box-1.12.10-reF1nd-windows-amd64",
+    "extract_dir": "sing-box-1.12.10-reF1nd",
     "bin": "sing-box.exe",
     "persist": "config",
     "checkver": {
