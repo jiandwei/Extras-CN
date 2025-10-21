@@ -25,6 +25,21 @@
             "Zed"
         ]
     ],
+    "persist": "zed",
+    "post_install": [
+        "$persist_dir = \"$dir\\zed\"",
+        "if (!(Test-Path $persist_dir)) {",
+        "    $local = \"$env:LocalAppData\\Zed\"",
+        "    $roaming = \"$env:AppData\\Zed\"",
+        "    if (Test-Path $local) {",
+        "        info '[Portable Mode] 迁移本地 LocalAppData\\Zed...'",
+        "        Copy-Item $local $persist_dir -Recurse",
+        "    } elseif (Test-Path $roaming) {",
+        "        info '[Portable Mode] 迁移 Roaming AppData\\Zed...'",
+        "        Copy-Item $roaming $persist_dir -Recurse",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/zed-industries/zed"
     },
