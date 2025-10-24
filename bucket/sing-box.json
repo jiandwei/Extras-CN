@@ -9,12 +9,12 @@
             "hash": "sha256:7d4b79f109f962f6c55badff4d3701dcbccf218d9affb873cd400cdc9e0631e9"
         }
     },
-    "extract_dir": "sing-box-1.12.10-dhr60-windows-amd64",
+    "extract_dir": "sing-box-1.12.10-reF1nd-windows-amd64",
     "bin": "sing-box.exe",
     "persist": "config",
     "checkver": {
-        "github": "https://github.com/DHR60/sing-box",
-        "regex": "tag/v([\\d.]+-dhr60)"
+        "github": "https://github.com/jiandwei/sing-box",
+        "regex": "tag/v([\\d.]+-reF1nd-windows-amd64)"
     },
     "autoupdate": {
         "architecture": {
