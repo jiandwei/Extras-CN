@@ -12,6 +12,7 @@
         "& \"$dir\\WeaselServer.exe\""
     ],
     "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+    "persist":"config",
     "uninstaller": {
         "script": "Invoke-ExternalCommand \"$dir/uninstall.exe\" -ArgumentList '/S' -RunAs | Out-Null"
     },
@@ -22,3 +23,4 @@
         "url": "https://github.com/rime/weasel/releases/download/$version/weasel-$version.0-installer.exe#/dl.7z"
     }
 }
+
