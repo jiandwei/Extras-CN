@@ -14,13 +14,13 @@
     "persist": "config",
     "checkver": {
         "github": "https://github.com/jiandwei/sing-box",
-        "regex": "tag/v([\\d.]+-reF1nd-windows-amd64)"
+        "regex": "tag/v([\\d.]+-reF1nd)-windows-amd64-build"
     },
     "autoupdate": {
+        "extract_dir": "sing-box-$version-windows-amd64",
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jiandwei/sing-box/releases/download/v$version-windows-amd64-build/sing-box-$version-windows-amd64.zip",
-                "extract_dir": "sing-box-$version-windows-amd64"
+                "url": "https://github.com/jiandwei/sing-box/releases/download/v$version-windows-amd64-build/sing-box-$version-windows-amd64.zip"
             }
         }
     }
