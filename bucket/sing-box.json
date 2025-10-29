@@ -1,15 +1,15 @@
 {
-    "version": "1.12.11-reF1nd",
+    "version": "1.12.12-reF1nd",
     "description": "The universal proxy platform",
     "homepage": "https://github.com/jiandwei/sing-box",
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jiandwei/sing-box/releases/download/v1.12.11-reF1nd-windows-amd64-build/sing-box-1.12.11-reF1nd-windows-amd64.zip",
-            "hash": "sha256:6766a1ca7c3016a02ce2c32e158646e0fca6e515a19493272ebc63562086bf4e"
+            "url": "https://github.com/jiandwei/sing-box/releases/download/v1.12.12-reF1nd-windows-amd64-build/sing-box-1.12.12-reF1nd-windows-amd64.zip",
+            "hash": "991e348a84090bf8a457cdea8e7655ed2e529381f15b85e04658b0571f248063"
         }
     },
-    "extract_dir": "sing-box-1.12.11-reF1nd-windows-amd64",
+    "extract_dir": "sing-box-1.12.12-reF1nd-windows-amd64",
     "bin": "sing-box.exe",
     "persist": "config",
     "checkver": {
