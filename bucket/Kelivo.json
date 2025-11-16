@@ -7,7 +7,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/Chevey339/kelivo/releases/download/v1.1.0/Kelivo_windows_1.1.0+15.zip",
-            "hash": "请使用 `Get-FileHash -Algorithm SHA256 Kelivo_windows_1.1.0+15.zip` 计算实际哈希值"
+            "hash": "sha256:535b430249647949e03ef497fe94f70e0b206cf1450363a0a5fad777c2bd6433"
         }
     },
     "shortcuts": [
