@@ -1,0 +1,29 @@
+{
+    "version": "0.0.6",
+    "description": "A modern desktop client for Emby & Jellyfin media servers, built with Qt6/C++20",
+    "homepage": "https://github.com/AlanHJ/qEmby",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/AlanHJ/qEmby/releases/download/v$version/qEmby-$version-Win-x64.zip",
+            "hash": "cdc7f256c8a1c35f48f17c7e7100762d972bf3977863cb96f0be3bf1efc9b25d"
+        }
+    },
+    "bin": "qEmby.exe",
+    "shortcuts": [
+        [
+            "qEmby.exe",
+            "qEmby"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/AlanHJ/qEmby"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/AlanHJ/qEmby/releases/download/v$version/qEmby-$version-Win-x64.zip"
+            }
+        }
+    }
+}
