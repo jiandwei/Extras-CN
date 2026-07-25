@@ -12,7 +12,7 @@
     "bin": "qEmby/qEmbyApp.exe",
     "shortcuts": [
         [
-            "qEmby.exe",
+            "qEmby/qEmby.exe",
             "qEmby"
         ]
     ],
