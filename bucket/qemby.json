@@ -9,7 +9,7 @@
             "hash": "cdc7f256c8a1c35f48f17c7e7100762d972bf3977863cb96f0be3bf1efc9b25d"
         }
     },
-    "bin": "qEmby.exe",
+    "bin": "qEmbyApp.exe",
     "shortcuts": [
         [
             "qEmby.exe",
