@@ -10,19 +10,9 @@
         }
     },
     "pre_install": [
-        "$innerZip = \"$dir\\qEmby\"",
-        "$tmpDir = \"$dir\\_tmp\"",
-        "if (Test-Path $tmpDir) { Remove-Item $tmpDir -Recurse -Force }",
-        "New-Item -ItemType Directory -Path $tmpDir -Force | Out-Null",
-        "Add-Type -AssemblyName System.IO.Compression.FileSystem",
-        "[System.IO.Compression.ZipFile]::ExtractToDirectory($innerZip, $tmpDir)",
-        "$items = Get-ChildItem $tmpDir",
-        "if (($items.Count -eq 1) -and ($items[0].PSIsContainer)) {",
-        "    Move-Item -Path \"$($items[0].FullName)\\*\" -Destination $dir -Force",
-        "} else {",
-        "    Move-Item -Path \"$tmpDir\\*\" -Destination $dir -Force",
-        "}",
-        "Remove-Item $innerZip, $tmpDir -Recurse -Force"
+        "$src = \"$dir\\qEmby\"",
+        "Get-ChildItem -Path $src | Move-Item -Destination $dir -Force",
+        "Remove-Item -Path $src -Recurse -Force"
     ],
     "bin": "qEmbyApp.exe",
     "shortcuts": [
