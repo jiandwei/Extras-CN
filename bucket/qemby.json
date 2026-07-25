@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/AlanHJ/qEmby/releases/download/v$version/qEmby-$version-Win-x64.zip",
+            "url": "https://github.com/AlanHJ/qEmby/releases/download/v0.0.6/qEmby-0.0.6-Win-x64.zip",
             "hash": "cdc7f256c8a1c35f48f17c7e7100762d972bf3977863cb96f0be3bf1efc9b25d"
         }
     },
