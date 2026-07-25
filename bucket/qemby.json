@@ -9,10 +9,25 @@
             "hash": "cdc7f256c8a1c35f48f17c7e7100762d972bf3977863cb96f0be3bf1efc9b25d"
         }
     },
-    "bin": "qEmby\\qEmbyApp.exe",
+    "pre_install": [
+        "$innerZip = \"$dir\\qEmby\"",
+        "$tmpDir = \"$dir\\_tmp\"",
+        "if (Test-Path $tmpDir) { Remove-Item $tmpDir -Recurse -Force }",
+        "New-Item -ItemType Directory -Path $tmpDir -Force | Out-Null",
+        "Add-Type -AssemblyName System.IO.Compression.FileSystem",
+        "[System.IO.Compression.ZipFile]::ExtractToDirectory($innerZip, $tmpDir)",
+        "$items = Get-ChildItem $tmpDir",
+        "if (($items.Count -eq 1) -and ($items[0].PSIsContainer)) {",
+        "    Move-Item -Path \"$($items[0].FullName)\\*\" -Destination $dir -Force",
+        "} else {",
+        "    Move-Item -Path \"$tmpDir\\*\" -Destination $dir -Force",
+        "}",
+        "Remove-Item $innerZip, $tmpDir -Recurse -Force"
+    ],
+    "bin": "qEmbyApp.exe",
     "shortcuts": [
         [
-            "qEmby/qEmby.exe",
+            "qEmbyApp.exe",
             "qEmby"
         ]
     ],
