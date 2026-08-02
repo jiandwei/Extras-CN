@@ -9,6 +9,9 @@
             "hash": "212a98ad91b65563b0375196f6f61d6322283dd59d5ee15d6749cadebc4e3193"
         }
     },
+    "pre_install": [
+        "Get-ChildItem \"$dir\\WSLDashboard.*.Portable.x64.exe\" | Rename-Item -NewName 'WSLDashboard.exe' -ErrorAction SilentlyContinue"
+    ],
     "bin": "WSLDashboard.exe",
     "shortcuts": [
         [
