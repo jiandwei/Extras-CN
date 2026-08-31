@@ -27,24 +27,6 @@
         "}"
     ],
 
-    "shortcuts": [
-        [
-            "wind_portable.exe",
-            "清风输入法"
-        ],
-        [
-            "wind_setting.exe",
-            "清风输入法设置"
-        ]
-    ],
-
-    "bin": [
-        [
-            "wind_cli.bat",
-            "windinput"
-        ]
-    ],
-
     "checkver": {
         "github": "https://github.com/huanfeng/WindInput"
     },
