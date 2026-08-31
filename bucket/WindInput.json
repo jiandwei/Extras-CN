@@ -1,0 +1,54 @@
+{
+    "version": "0.119.0",
+    "description": "清风输入法（WindInput）- 轻量、快速、可定制的开源中文输入法",
+    "homepage": "https://github.com/huanfeng/WindInput",
+    "license": "MIT",
+    "url": "https://github.com/huanfeng/WindInput/releases/download/v0.119.0/WindInput-Portable-0.119.0.zip",
+    "hash": "ab0552603257fae3f02910ab324a09286e312de635fa8c17a8df242268b40cca",
+    "extract_dir": "WindInput-0.119.0",
+
+    "persist": "userdata",
+
+    "installer": {
+        "script": [
+            "info 'Registering WindInput TSF and starting service...'",
+            "$proc = Start-Process -FilePath \"$dir\\wind_portable.exe\" -ArgumentList '-start' -Wait -PassThru",
+            "if ($proc.ExitCode -ne 0) { throw \"WindInput installation failed with exit code $($proc.ExitCode)\" }"
+        ]
+    },
+
+    "pre_uninstall": [
+        "if (Test-Path \"$dir\\wind_portable.exe\") {",
+        "    info 'Stopping WindInput service and unregistering TSF...'",
+        "    $proc = Start-Process -FilePath \"$dir\\wind_portable.exe\" -ArgumentList '-stop' -Wait -PassThru",
+        "    if ($proc.ExitCode -ne 0) { throw \"WindInput unregistration failed with exit code $($proc.ExitCode)\" }",
+        "}"
+    ],
+
+    "shortcuts": [
+        [
+            "wind_portable.exe",
+            "清风输入法"
+        ],
+        [
+            "wind_setting.exe",
+            "清风输入法设置"
+        ]
+    ],
+
+    "bin": [
+        [
+            "wind_cli.bat",
+            "windinput"
+        ]
+    ],
+
+    "checkver": {
+        "github": "https://github.com/huanfeng/WindInput"
+    },
+
+    "autoupdate": {
+        "url": "https://github.com/huanfeng/WindInput/releases/download/v$version/WindInput-Portable-$version.zip",
+        "extract_dir": "WindInput-$version"
+    }
+}
