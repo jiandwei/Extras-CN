@@ -1,28 +1,25 @@
 {
-    "version": "1.13.19-reF1nd",
-    "description": "sing-box with ref1nd GUI - A universal proxy platform",
-    "homepage": "https://github.com/DustinWin/proxy-tools",
+    "version": "1.14.0-reF1nd",
+    "description": "sing-box reF1nd build",
+    "homepage": "https://github.com/reF1nd/sing-box-releases",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/reF1nd/sing-box-releases/releases/download/v1.13.19-reF1nd/sing-box-1.13.19-reF1nd-windows-amd64v3.zip",
-            "hash": "b7ce152ad534bf51f1c0ef1384f8fa439148eacd93a11ed6cd6d7cdab0430543",
-            "extract_dir": "sing-box-1.13.19-reF1nd-windows-amd64v3",
-            "bin": "sing-box.exe"
+            "url": "https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.0-reF1nd/sing-box-1.14.0-reF1nd-windows-amd64v3.zip",
+            "hash": "1e4bc6f8f04f60b78b8d7d7bc747f9f0d5246aa5e959a901b9767ebe6502d2b4"
         }
     },
-    "checkver": {
-        "url": "https://github.com/reF1nd/sing-box-releases/releases",
-        "regex": "/releases\\/tag\\/v([\\d.]+-reF1nd(?:\\.\\d+)?)/",
-        "reverse": true
-    },
+    "pre_install": "if (!(Test-Path \"$dir\\config\")) { New-Item \"$dir\\config\" -ItemType Directory | Out-Null }",
+    "bin": "sing-box.exe",
     "persist": "config",
+    "checkver": {
+        "github": "https://github.com/reF1nd/sing-box-releases",
+        "regex": "/releases/tag/v(?<version>[\\d.]+-reF1nd)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/reF1nd/sing-box-releases/releases/download/v$version/sing-box-$version-windows-amd64v3.zip",
-                "extract_dir": "sing-box-$version-windows-amd64v3",
-                "bin": "sing-box.exe"
+                "url": "https://github.com/reF1nd/sing-box-releases/releases/download/v$version/sing-box-$version-windows-amd64v3.zip"
             }
         }
     }
