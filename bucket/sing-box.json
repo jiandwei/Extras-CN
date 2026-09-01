@@ -1,13 +1,13 @@
 {
-    "version": "1.14.0-reF1nd",
+    "version": "1.14.0-reF1nd.1",
     "description": "sing-box reF1nd build",
     "homepage": "https://github.com/reF1nd/sing-box-releases",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.0-reF1nd/sing-box-1.14.0-reF1nd-windows-amd64v3.zip",
-            "hash": "1e4bc6f8f04f60b78b8d7d7bc747f9f0d5246aa5e959a901b9767ebe6502d2b4",
-            "extract_dir": "sing-box-1.14.0-reF1nd-windows-amd64v3"
+            "url": "https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.0-reF1nd.1/sing-box-1.14.0-reF1nd.1-windows-amd64v3.zip",
+            "hash": "4b72e605d735e8380701cc16cc41bf64833be3ffe3c3de4d299103a65de41032",
+            "extract_dir": "sing-box-1.14.0-reF1nd.1-windows-amd64v3"
         }
     },
     "pre_install": [
@@ -19,7 +19,7 @@
     "persist": "config",
     "checkver": {
         "github": "https://github.com/reF1nd/sing-box-releases",
-        "regex": "/releases/tag/v(?<version>\\d+\\.\\d+\\.\\d+-reF1nd)"
+        "regex": "/releases/tag/v(?<version>\\d+\\.\\d+\\.\\d+-reF1nd(?:\\.\\d+)?)"
     },
     "autoupdate": {
         "architecture": {
