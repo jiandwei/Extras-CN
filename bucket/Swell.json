@@ -1,0 +1,28 @@
+{
+    "version": "3.3.3",
+    "description": "Swell Proxy - Windows native proxy client powered by sing-box",
+    "homepage": "https://github.com/yaog6700-bit/Swell-Proxy",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/yaog6700-bit/Swell-Proxy/releases/download/v3.3.3/Swell-win-x64.zip",
+            "hash": "85a150a14a1ee9d05c92b52c3d58778ac0cd04acee9c71e6ae9d7433489f0e43"
+        }
+    },
+    "shortcuts": [
+        [
+            "Swell Proxy.exe",
+            "Swell Proxy"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/yaog6700-bit/Swell-Proxy"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/yaog6700-bit/Swell-Proxy/releases/download/v$version/Swell-win-x64.zip"
+            }
+        }
+    }
+}
