@@ -1,14 +1,12 @@
 {
-    "version": "0.119.0",
+    "version": "0.120.0",
     "description": "清风输入法（WindInput）",
     "homepage": "https://github.com/huanfeng/WindInput",
     "license": "GPL-3.0-or-later",
-    "url": "https://github.com/huanfeng/WindInput/releases/download/v0.119.0/WindInput-Portable-0.119.0.zip",
-    "hash": "ab0552603257fae3f02910ab324a09286e312de635fa8c17a8df242268b40cca",
-    "extract_dir": "WindInput-0.119.0",
-
+    "url": "https://github.com/huanfeng/WindInput/releases/download/v0.120.0/WindInput-Portable-0.120.0.zip",
+    "hash": "7004ca8a17b1c592cb57cbb43173678effa8e47f90012f16e750689420e7878f",
+    "extract_dir": "WindInput-0.120.0",
     "persist": "userdata",
-
     "installer": {
         "script": [
             "info 'Registering WindInput TSF and starting service...'",
@@ -17,7 +15,6 @@
             "if ($proc.ExitCode -ne 0) { throw \"WindInput installation failed with exit code $($proc.ExitCode)\" }"
         ]
     },
-
     "pre_uninstall": [
         "if (Test-Path \"$dir\\wind_portable.exe\") {",
         "    info 'Stopping WindInput service and unregistering TSF...'",
@@ -26,11 +23,9 @@
         "    if ($proc.ExitCode -ne 0) { throw \"WindInput unregistration failed with exit code $($proc.ExitCode)\" }",
         "}"
     ],
-
     "checkver": {
         "github": "https://github.com/huanfeng/WindInput"
     },
-
     "autoupdate": {
         "url": "https://github.com/huanfeng/WindInput/releases/download/v$version/WindInput-Portable-$version.zip",
         "extract_dir": "WindInput-$version"
