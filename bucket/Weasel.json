@@ -1,52 +1,56 @@
 {
-    "version": "0.17.4",
-    "description": "Weasel (小狼毫) - Rime input method engine for Windows",
-    "homepage": "https://rime.im/",
+    "version": "0.17.4.92",
+    "description": "Weasel (小狼毫) - fxliang Personal Build",
+    "homepage": "https://github.com/fxliang/weasel",
     "license": "GPL-3.0-or-later",
-    "url": "https://github.com/rime/weasel/releases/download/0.17.4/weasel-0.17.4.0-installer.exe#/weasel-installer.exe",
-    "hash": "cf509534a8f5f8af9c98ed7cbb8f135439f145a8cbe7e50ede42bb5b5ab45c29",
 
-    "pre_install": [
-        "New-Item -ItemType Directory -Force -Path \"$dir\\Rime\" | Out-Null"
-    ],
+    "url": "https://github.com/fxliang/weasel/releases/download/pblatest/weasel-0.17.4.92.4e1206f-installer.exe#/weasel-installer.exe",
+    "hash": "skip",
 
     "installer": {
-        "script": [
-            "Start-Process -Wait -Verb RunAs \"$dir\\weasel-installer.exe\" -ArgumentList '/S'"
+        "args": [
+            "/S",
+            "/s",
+            "/D=$dir"
         ]
     },
 
-    "persist": "Rime",
+    "persist": [
+        "Rime"
+    ],
 
     "post_install": [
-        "$rimeDir = Join-Path $dir 'Rime'",
-        "New-Item -Path 'HKCU:\\Software\\Rime\\Weasel' -Force | Out-Null",
-        "Set-ItemProperty -Path 'HKCU:\\Software\\Rime\\Weasel' -Name 'RimeUserDir' -Value $rimeDir",
-        "$uninstall = (Get-ItemProperty 'HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Weasel' -ErrorAction SilentlyContinue).UninstallString",
-        "if ($uninstall) {",
-        "    $weaselRoot = Split-Path $uninstall.Trim('\"')",
-        "    $deployer = Join-Path $weaselRoot 'WeaselDeployer.exe'",
-        "    if (Test-Path $deployer) {",
-        "        Start-Process -Wait $deployer -ArgumentList '/deploy'",
-        "    }",
+        "$weaselRoot = Get-ChildItem -Path $dir -Directory -Filter 'weasel-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1",
+        "if (-not $weaselRoot) { throw 'Weasel installation directory not found.' }",
+        "$setup = Join-Path $weaselRoot.FullName 'WeaselSetup.exe'",
+        "$deployer = Join-Path $weaselRoot.FullName 'WeaselDeployer.exe'",
+        "$userDir = Join-Path $dir 'Rime'",
+        "if (Test-Path $setup) {",
+        "    & $setup \"/userdir:$userDir\"",
+        "}",
+        "if (Test-Path $deployer) {",
+        "    & $deployer '/deploy'",
         "}"
     ],
 
     "uninstaller": {
         "script": [
-            "$uninstall = (Get-ItemProperty 'HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Weasel' -ErrorAction SilentlyContinue).UninstallString",
-            "if ($uninstall) {",
-            "    $exe = $uninstall.Trim('\"')",
-            "    Start-Process -Wait -Verb RunAs $exe -ArgumentList '/S'",
+            "$weaselRoot = Get-ChildItem -Path $dir -Directory -Filter 'weasel-*' -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1",
+            "if ($weaselRoot) {",
+            "    $uninstaller = Join-Path $weaselRoot.FullName 'uninstall.exe'",
+            "    if (Test-Path $uninstaller) {",
+            "        & $uninstaller '/S'",
+            "    }",
             "}"
         ]
     },
 
     "checkver": {
-        "github": "https://github.com/rime/weasel"
+        "url": "https://api.github.com/repos/fxliang/weasel/releases/tags/pblatest",
+        "regex": "weasel-(?<version>[\\d.]+)\\.(?<commit>[0-9a-f]+)-installer\\.exe"
     },
 
     "autoupdate": {
-        "url": "https://github.com/rime/weasel/releases/download/$version/weasel-$version.0-installer.exe#/weasel-installer.exe"
+        "url": "https://github.com/fxliang/weasel/releases/download/pblatest/weasel-$version.$matchCommit-installer.exe#/weasel-installer.exe"
     }
 }
