@@ -1,0 +1,52 @@
+{
+    "version": "0.17.4",
+    "description": "Weasel (小狼毫) - Rime input method engine for Windows",
+    "homepage": "https://rime.im/",
+    "license": "GPL-3.0-or-later",
+    "url": "https://github.com/rime/weasel/releases/download/0.17.4/weasel-0.17.4.0-installer.exe#/weasel-installer.exe",
+    "hash": "cf509534a8f5f8af9c98ed7cbb8f135439f145a8cbe7e50ede42bb5b5ab45c29",
+
+    "pre_install": [
+        "New-Item -ItemType Directory -Force -Path \"$dir\\Rime\" | Out-Null"
+    ],
+
+    "installer": {
+        "script": [
+            "Start-Process -Wait -Verb RunAs \"$dir\\weasel-installer.exe\" -ArgumentList '/S'"
+        ]
+    },
+
+    "persist": "Rime",
+
+    "post_install": [
+        "$rimeDir = Join-Path $dir 'Rime'",
+        "New-Item -Path 'HKCU:\\Software\\Rime\\Weasel' -Force | Out-Null",
+        "Set-ItemProperty -Path 'HKCU:\\Software\\Rime\\Weasel' -Name 'RimeUserDir' -Value $rimeDir",
+        "$uninstall = (Get-ItemProperty 'HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Weasel' -ErrorAction SilentlyContinue).UninstallString",
+        "if ($uninstall) {",
+        "    $weaselRoot = Split-Path $uninstall.Trim('\"')",
+        "    $deployer = Join-Path $weaselRoot 'WeaselDeployer.exe'",
+        "    if (Test-Path $deployer) {",
+        "        Start-Process -Wait $deployer -ArgumentList '/deploy'",
+        "    }",
+        "}"
+    ],
+
+    "uninstaller": {
+        "script": [
+            "$uninstall = (Get-ItemProperty 'HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Weasel' -ErrorAction SilentlyContinue).UninstallString",
+            "if ($uninstall) {",
+            "    $exe = $uninstall.Trim('\"')",
+            "    Start-Process -Wait -Verb RunAs $exe -ArgumentList '/S'",
+            "}"
+        ]
+    },
+
+    "checkver": {
+        "github": "https://github.com/rime/weasel"
+    },
+
+    "autoupdate": {
+        "url": "https://github.com/rime/weasel/releases/download/$version/weasel-$version.0-installer.exe#/weasel-installer.exe"
+    }
+}
