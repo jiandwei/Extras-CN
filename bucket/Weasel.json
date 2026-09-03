@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
 
     "url": "https://github.com/fxliang/weasel/releases/download/pblatest/weasel-0.17.4.92.4e1206f-installer.exe#/weasel-installer.exe",
-    "hash": "skip",
+    "hash": "c2669ca6f223184fd682e3b6e75ad71910e0d7cd26d66eb800d5937d9d8b6023",
 
     "installer": {
         "args": [
