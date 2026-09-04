@@ -6,15 +6,16 @@
     "url": "https://github.com/huanfeng/WindInput/releases/download/v0.120.1/WindInput-Portable-0.120.1.zip",
     "hash": "4a1465634f18d89f34591008b4ff3b14f38b74bf9c888efa3b6a278621b2e2e6",
     "extract_dir": "WindInput-0.120.1",
+
     "persist": "userdata",
-    "installer": {
-        "script": [
-            "info 'Registering WindInput TSF and starting service...'",
-            "$proc = Start-Process -FilePath \"$dir\\wind_portable.exe\" -ArgumentList '-start' -WorkingDirectory \"$dir\" -PassThru",
-            "$proc.WaitForExit()",
-            "if ($proc.ExitCode -ne 0) { throw \"WindInput installation failed with exit code $($proc.ExitCode)\" }"
-        ]
-    },
+
+    "post_install": [
+        "info 'Registering WindInput TSF and starting service...'",
+        "$proc = Start-Process -FilePath \"$dir\\wind_portable.exe\" -ArgumentList '-start' -WorkingDirectory \"$dir\" -PassThru",
+        "$proc.WaitForExit()",
+        "if ($proc.ExitCode -ne 0) { throw \"WindInput installation failed with exit code $($proc.ExitCode)\" }"
+    ],
+
     "pre_uninstall": [
         "if (Test-Path \"$dir\\wind_portable.exe\") {",
         "    info 'Stopping WindInput service and unregistering TSF...'",
@@ -23,9 +24,11 @@
         "    if ($proc.ExitCode -ne 0) { throw \"WindInput unregistration failed with exit code $($proc.ExitCode)\" }",
         "}"
     ],
+
     "checkver": {
         "github": "https://github.com/huanfeng/WindInput"
     },
+
     "autoupdate": {
         "url": "https://github.com/huanfeng/WindInput/releases/download/v$version/WindInput-Portable-$version.zip",
         "extract_dir": "WindInput-$version"
