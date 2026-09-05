@@ -9,14 +9,14 @@
     "url": "https://github.com/appdev/siyuan-unlock/releases/download/v3.8.2/siyuan-3.8.2-win.exe#/dl.7z",
     "hash": "bdd0a4fe70896717aed7e222fe7a6d1a7ef9a2535dd263b7919ef567b540291b",
     "pre_install": [
-        "7z x \"$dir\\`$PLUGINSDIR\\*.7z\" -o\"$dir\\`$PLUGINSDIR\\siyuan-unlock\"",
-        "Remove-Item -R -Path $dir\\resources -ErrorAction SilentlyContinue",
-        "Move-Item $dir\\`$PLUGINSDIR\\siyuan-unlock\\* $dir -force -ErrorAction SilentlyContinue",
-        "Remove-Item -R -Path $dir\\`$PLUGINSDIR -ErrorAction SilentlyContinue",
-        "Remove-Item -Path \"$dir\\resources\\pandoc.zip\" -ErrorAction SilentlyContinue",
-        "Remove-Item -Path \"$dir\\resources\\changelogs\" -ErrorAction SilentlyContinue",
-        "Remove-Item -Path \"$dir\\resources\\guide\" -ErrorAction SilentlyContinue",
-        "Get-ChildItem \"$dir\\locales\" -Exclude \"zh-CN.pak\" | Remove-Item -Force -ErrorAction SilentlyContinue"
+    "7z x \"$dir\\`$PLUGINSDIR\\*.7z\" -o\"$dir\\`$PLUGINSDIR\\siyuan-unlock\"",
+    "Remove-Item -R -Path \"$dir\\resources\" -ErrorAction SilentlyContinue",
+    "Move-Item \"$dir\\`$PLUGINSDIR\\siyuan-unlock\\*\" \"$dir\" -Force -ErrorAction SilentlyContinue",
+    "Remove-Item -R -Path \"$dir\\`$PLUGINSDIR\" -ErrorAction SilentlyContinue",
+    "Remove-Item -Recurse -Force -Path \"$dir\\resources\\pandoc\" -ErrorAction SilentlyContinue",
+    "Remove-Item -Recurse -Force -Path \"$dir\\resources\\changelogs\" -ErrorAction SilentlyContinue",
+    "Remove-Item -Recurse -Force -Path \"$dir\\resources\\guide\" -ErrorAction SilentlyContinue",
+    "Get-ChildItem \"$dir\\locales\" -Exclude \"zh-CN.pak\" | Remove-Item -Force -ErrorAction SilentlyContinue"
     ],
     "bin": "siyuan.exe",
     "shortcuts": [
