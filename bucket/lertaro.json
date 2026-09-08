@@ -10,6 +10,7 @@
         }
     },
     "extract_dir": "Lertaro",
+    "persist": "Data",
     "shortcuts": [
         [
             "Lertaro.App.exe",
