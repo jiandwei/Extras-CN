@@ -10,10 +10,7 @@
     "installer": {
         "script": [
             "$installer = Join-Path $dir 'weasel-installer.exe'",
-            "$arguments = @('/S', '/s', \"/D=$dir\")",
-            "$process = Start-Process -FilePath $installer -ArgumentList $arguments -Verb RunAs -PassThru",
-            "$process.WaitForExit()",
-            "$process.Refresh()",
+            "$process = Start-Process -FilePath $installer -ArgumentList '/S' -Verb RunAs -PassThru -Wait",
             "if ($process.ExitCode -ne 0) { throw \"Weasel installer failed with exit code $($process.ExitCode)\" }"
         ]
     },
@@ -26,33 +23,45 @@
         "$userDir = Join-Path $persist_dir 'Rime'",
         "New-Item -ItemType Directory -Force -Path $userDir | Out-Null",
 
-        "$weaselRoot = Get-ChildItem -Path $dir -Directory -Filter 'weasel-*' -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1",
-        "if (-not $weaselRoot) { throw 'Weasel installation directory not found.' }",
+        "$regPath = if ([Environment]::Is64BitOperatingSystem) { 'HKLM:\\SOFTWARE\\WOW6432Node\\Rime\\Weasel' } else { 'HKLM:\\SOFTWARE\\Rime\\Weasel' }",
+        "$props = Get-ItemProperty -Path $regPath -ErrorAction Stop",
+        "$weaselRoot = $props.WeaselRoot",
 
-        "$setup = Join-Path $weaselRoot.FullName 'WeaselSetup.exe'",
+        "if (-not $weaselRoot -or -not (Test-Path $weaselRoot)) { throw 'Weasel installation directory not found in registry.' }",
+
+        "$setup = Join-Path $weaselRoot 'WeaselSetup.exe'",
         "if (Test-Path $setup) {",
-        "    & $setup \"/userdir:$userDir\"",
+        "    $process = Start-Process -FilePath $setup -ArgumentList \"/userdir:$userDir\" -PassThru -Wait",
+        "    if ($process.ExitCode -ne 0) { throw \"WeaselSetup failed with exit code $($process.ExitCode)\" }",
         "}",
 
-        "$deployer = Join-Path $weaselRoot.FullName 'WeaselDeployer.exe'",
+        "$deployer = Join-Path $weaselRoot 'WeaselDeployer.exe'",
         "if (Test-Path $deployer) {",
-        "    Start-Process -FilePath $deployer -ArgumentList '/deploy' -WorkingDirectory $weaselRoot.FullName -Wait",
+        "    $process = Start-Process -FilePath $deployer -ArgumentList '/deploy' -WorkingDirectory $weaselRoot -PassThru -Wait",
+        "    if ($process.ExitCode -ne 0) { throw \"Weasel deploy failed with exit code $($process.ExitCode)\" }",
         "}"
     ],
 
     "uninstaller": {
         "script": [
-            "$weaselRoot = Get-ChildItem -Path $dir -Directory -Filter 'weasel-*' -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1",
-            "if ($weaselRoot) {",
-            "    $server = Join-Path $weaselRoot.FullName 'WeaselServer.exe'",
-            "    if (Test-Path $server) {",
-            "        & $server '/quit'",
-            "    }",
+            "$regPath = if ([Environment]::Is64BitOperatingSystem) { 'HKLM:\\SOFTWARE\\WOW6432Node\\Rime\\Weasel' } else { 'HKLM:\\SOFTWARE\\Rime\\Weasel' }",
 
-            "    $uninstaller = Join-Path $weaselRoot.FullName 'uninstall.exe'",
-            "    if (Test-Path $uninstaller) {",
-            "        $process = Start-Process -FilePath $uninstaller -ArgumentList '/S' -Verb RunAs -PassThru",
-            "        $process.WaitForExit()",
+            "if (Test-Path $regPath) {",
+            "    $props = Get-ItemProperty -Path $regPath -ErrorAction SilentlyContinue",
+            "    $weaselRoot = $props.WeaselRoot",
+
+            "    if ($weaselRoot -and (Test-Path $weaselRoot)) {",
+            "        $server = Join-Path $weaselRoot 'WeaselServer.exe'",
+            "        if (Test-Path $server) {",
+            "            & $server '/quit'",
+            "        }",
+
+            "        $uninstaller = Join-Path $weaselRoot 'uninstall.exe'",
+            "        if (Test-Path $uninstaller) {",
+            "            $arguments = \"/S _?=$weaselRoot\"",
+            "            $process = Start-Process -FilePath $uninstaller -ArgumentList $arguments -Verb RunAs -PassThru -Wait",
+            "            if ($process.ExitCode -ne 0) { throw \"Weasel uninstaller failed with exit code $($process.ExitCode)\" }",
+            "        }",
             "    }",
             "}"
         ]
